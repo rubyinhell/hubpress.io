@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:13:59 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Useful Rails Helper]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:24:40 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Useful Rails Helper]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__">邏輯判斷</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -22,4 +22,4 @@
 </div>
 </div>
 </div>
-</div>]]></description><link>https://rubyinhell.github.io/hubpress.io/2015/04/11/Useful-Rails-Helper.html</link><guid isPermaLink="true">https://rubyinhell.github.io/hubpress.io/2015/04/11/Useful-Rails-Helper.html</guid><category><![CDATA[rails helper]]></category><dc:creator><![CDATA[Chun Hao Hung]]></dc:creator><pubDate>Sat, 11 Apr 2015 00:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://rubyinhell.github.io/hubpress.io/2015/04/11/Useful-Rails-Helper.html</link><guid isPermaLink="true">https://rubyinhell.github.io/hubpress.io/2015/04/11/Useful-Rails-Helper.html</guid><category><![CDATA[rails]]></category><category><![CDATA[ helper]]></category><dc:creator><![CDATA[Chun Hao Hung]]></dc:creator><pubDate>Sat, 11 Apr 2015 00:00:00 GMT</pubDate></item></channel></rss>
