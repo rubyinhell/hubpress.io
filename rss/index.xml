@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:24:40 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Useful Rails Helper]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:44:34 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Useful Rails Helper part2]]></title><description><![CDATA[<div class="sect1">
+<h2 id="__helper_part2">常用helper part2</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__">時間</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>  def from_now?(time)
+    time = Time.new(1970) if time.nil?
+    distance_of_time_in_words(Time.now, time) rescue ''
+  end
+  ### YYYY-mm-dd HH:MM:SS
+  def strftime?(time)
+    value = time.strftime('%Y-%m-%d %H:%M:%S') rescue ''
+  end
+  ### HH:MM
+  def strfhm?(time)
+    value = time.strftime('%H:%M') rescue ''
+  end
+  ### HH:MM:SS
+  def strfhms?(time)
+    value = time.strftime('%H:%M:%S') rescue ''
+  end
+  ### YYYY-mm-dd
+  def strfymd?(time)
+    value = time.strftime('%Y-%m-%d') rescue ''
+  end
+  ### Today - Month
+  def strfM?
+    #value = Time.zone.now.midnight.strftime('%B') rescue ''
+    value = I18n.l(Time.zone.now.midnight, :format =&gt; "%B")
+  end
+  ### Today - day
+  def strfD?
+    value = Time.zone.now.midnight.strftime('%d') rescue ''
+  end
+  ### Today - whatday
+  def strfW?
+    value = I18n.l(Time.zone.now.midnight, :format =&gt; "%A")
+  end
+  ### Today - when
+  def strfHM?
+    value = Time.zone.now.strftime('%H:%M') rescue ''
+  end</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>]]></description><link>https://rubyinhell.github.io/hubpress.io/2015/06/24/Useful-Rails-Helper-part2.html</link><guid isPermaLink="true">https://rubyinhell.github.io/hubpress.io/2015/06/24/Useful-Rails-Helper-part2.html</guid><category><![CDATA[rails]]></category><category><![CDATA[ helper]]></category><dc:creator><![CDATA[Chun Hao Hung]]></dc:creator><pubDate>Wed, 24 Jun 2015 00:00:00 GMT</pubDate></item><item><title><![CDATA[Useful Rails Helper]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__">邏輯判斷</h2>
 <div class="sectionbody">
 <div class="listingblock">
