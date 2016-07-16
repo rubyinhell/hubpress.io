@@ -1,6 +1,6 @@
 # Useful Rails Helper part2
-:published_at: 2015-01-31
-:hp-tags: rails helper
+:published_at: 2015-06-24
+:hp-tags: rails, helper
 
 ## 常用helper part2
 
