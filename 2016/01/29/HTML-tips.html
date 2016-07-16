@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>HTML tips</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://rubyinhell.github.io/hubpress.io/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//rubyinhell.github.io/hubpress.io/themes/casper/assets/css/screen.css?v=1468684623639" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="隨筆小記-Ruby or Rails" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HTML tips" />
+    <meta property="og:description" content="each_with_index list &#x3D; [a,b,c] list.each_with_index { |val, index| puts &quot;#{index}&quot;, &quot;#{val}&quot;} submit_tag submit_tag t(&#x27;form.submit&#x27;), name: &#x27;q[order]&#x27;, class: &quot;btn btn-default&quot;, data: { disable_with: &quot;Please wait...&quot; } ransack tip search form  &#x3D; search_form_for @search, :url &#x3D;&amp;gt; params[:action] do |f| controller" />
+    <meta property="og:url" content="https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html" />
+    <meta property="article:tag" content="gem" />
+    <meta property="article:tag" content=" rails" />
+    <meta property="article:tag" content=" controller" />
+    <meta property="article:tag" content=" view" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="HTML tips" />
+    <meta name="twitter:description" content="each_with_index list &#x3D; [a,b,c] list.each_with_index { |val, index| puts &quot;#{index}&quot;, &quot;#{val}&quot;} submit_tag submit_tag t(&#x27;form.submit&#x27;), name: &#x27;q[order]&#x27;, class: &quot;btn btn-default&quot;, data: { disable_with: &quot;Please wait...&quot; } ransack tip search form  &#x3D; search_form_for @search, :url &#x3D;&amp;gt; params[:action] do |f| controller" />
+    <meta name="twitter:url" content="https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="隨筆小記-Ruby or Rails" href="https://rubyinhell.github.io/hubpress.io/rss/" />
+</head>
+<body class="post-template tag-gem tag-rails tag-controller tag-view nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-gem tag-rails tag-controller tag-view">
+
+        <header class="post-header">
+            <h1 class="post-title">HTML tips</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-01-29">29 January 2016</time>  on <a href="https://rubyinhell.github.io/hubpress.io/tag/gem/">gem</a>, <a href="https://rubyinhell.github.io/hubpress.io/tag/rails/"> rails</a>, <a href="https://rubyinhell.github.io/hubpress.io/tag/controller/"> controller</a>, <a href="https://rubyinhell.github.io/hubpress.io/tag/view/"> view</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="sect1">
+<h2 id="_each_with_index">each_with_index</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>list = [a,b,c]
+list.each_with_index { |val, index| puts "#{index}", "#{val}"}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_tag">submit_tag</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>submit_tag t('form.submit'), name: 'q[order]', class: "btn btn-default", data: { disable_with: "Please wait..." }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ransack_tip">ransack tip</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_search_form">search form</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> = search_form_for @search, :url =&gt; params[:action] do |f|</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controller">controller</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>@search = User.search(params[:q])
+@users = @search.result.order(id: :desc).paginate(:page =&gt; params[:page], :per_page =&gt; 4)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_html_tag_string">custom html tag:模糊搜尋&#8594;string</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>input.form-control type="text" placeholder="..." name="q[name_cont]" id="name_s"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_html_tag_integer_id">custom html tag:絕對搜尋&#8594;integer(id)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>input.form-control type="text" placeholder="..." name="q[id_eq]" id="id_s"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_controller_2" class="sect0">Controller</h1>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>class PageantsController &lt; ApplicationController
+  before_action :authenticate_user!, except: [:home, :signup, :vote, :list, :jialuan, :index]
+  before_action :set_pageant, only: [:show, :edit, :update, :destroy]
+  layout 'application-h5'
+  layout "application", :only =&gt; [:index, :show, :edit, :update, :destroy]
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>before_action :authenticate_user!, except: [:home, :signup, :vote, :list, :jialuan, :index]</code>
+這些頁面不認證即可登入
+<code>layout 'application'</code>
+該controller,僅指定view採用該layout</p>
+</div>
+<div class="sect2">
+<h3 id="_render_layout">render layout</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>    respond_to do |format|
+      format.html  { render layout: 'application-h5' }
+      format.json { render json: @users }
+    end</code></pre>
+</div>
+</div>
+</div>
+<h1 id="_view" class="sect0">View</h1>
+<div class="sect1">
+<h2 id="_form">form</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_checkbox_t_f">checkbox - T/F</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :publish, 'Publish'
+          div.col-sm-4.control-label
+            div.checkbox.c-checkbox
+              label
+                = f.radio_button :publish, true, {}
+                span.fa.fa-check
+                = 'Yes:'
+            div.checkbox.c-checkbox
+              label
+                = f.radio_button :publish, false, {}
+                span.fa.fa-check
+                = 'No:'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textfield">textfield</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :phone_number, t('common.mobile')
+          div.col-sm-4.control-label
+            = f.text_field :phone_number, :class =&gt; 'form-control input-lg m-b'
+            span.help-block.m-b-none
+              = t('form.must')</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_select">select</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :user_id, t('machines.device_bind')
+          div.col-sm-4.control-label
+            = f.select :user_id, @user.id, {:include_blank =&gt; t('vehicles.sim_on_car')}, {}, {:class =&gt; "form-control"} rescue f.select :user_id, options_from_collection_for_select(@user, 'id', 'company_name'), {}, {:class =&gt; "form-control"}
+            span.help-block.m-b-none
+              = t('form.must')</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_button">button</h3>
+<div class="paragraph">
+<p>使用em圖示與按鍵整合</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> &lt;%= link_to edit_account_path(f), :class =&gt; 'btn btn-green' do %&gt;
+ &lt;em class="fa fa-long-arrow-left"&gt;&lt;%= t('form.edit')%&gt;&lt;/em&gt;
+ &lt;%end%&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_and_sumbit_bar">search and sumbit bar</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>.panel-heading
+  = search_form_for @search do |f|
+    .form-group.col-sm-9
+      .form-group.col-sm-4
+        #datetimepickerStart.input-group.date
+          = f.text_field :created_at_gteq, class: "form-control", :placeholder =&gt; t('form.start_date')
+          span.input-group-addon
+            span.fa.fa-calendar
+      .form-group.col-sm-4
+        #datetimepickerEnd.input-group.date
+          = f.text_field :created_at_lteq, class: "form-control", :placeholder =&gt; t('form.end_date')
+          span.input-group-addon
+            span.fa.fa-calendar
+      .input-group.col-sm-4
+        = f.text_field :name_cont, class: "form-control", :placeholder =&gt; t('common.key_word')
+        span.input-group-btn
+          = f.submit t('common.search'), class: "btn btn-default"
+    .form-group.col-sm-3
+      span.input-group-btn
+        = link_to t('form.new'), new_driver_path, :class =&gt; 'btn btn-info'
+        = f.submit t('common.search'), class: "btn btn-default"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_controller_to_access_self_account_user">another controller to access self (account &#8658; user)</h3>
+<div class="sect3">
+<h4 id="_new_page">new page</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;%= form_for :user, :url =&gt; accounts_path, method: :post do |f|%&gt;
+&lt;%= render :partial =&gt; "form", :locals =&gt; {:t =&gt; f}%&gt;
+&lt;% end %&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_edit_page">edit page</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;%= form_for @account do |f| %&gt;
+&lt;%= render :partial =&gt; "form", :locals =&gt; {:t =&gt; f}%&gt;
+&lt;% end %&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_migration">Migration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_timestamp">timestamp</h3>
+<div class="paragraph">
+<p><code>add_timestamps(:users)</code></p>
+</div>
+</div>
+</div>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="https://rubyinhell.github.io/hubpress.io/author/rubyinhell/" style="background-image: url(https://avatars.githubusercontent.com/u/1865978?v&#x3D;3)"><span class="hidden">Chun Hao Hung's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="https://rubyinhell.github.io/hubpress.io/author/rubyinhell/">Chun Hao Hung</a></h4>
+
+                    <p>Read <a href="https://rubyinhell.github.io/hubpress.io/author/rubyinhell/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Taiwan</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=HTML%20tips&amp;url=https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="https://rubyinhell.github.io/hubpress.io">隨筆小記-Ruby or Rails</a> &copy; 2016</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//rubyinhell.github.io/hubpress.io/themes/casper/assets/js/jquery.fitvids.js?v=1468684623639"></script>
+    <script type="text/javascript" src="//rubyinhell.github.io/hubpress.io/themes/casper/assets/js/index.js?v=1468684623639"></script>
+
+</body>
+</html>
