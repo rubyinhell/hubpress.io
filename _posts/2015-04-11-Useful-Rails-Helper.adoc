@@ -1,7 +1,7 @@
-= Useful Rails Helper
-:published_at: 2015-04-11
-
 # Useful Rails Helper
+:published_at: 2015-04-11
+:hp-tags: rails helper
+
 
 ## 邏輯判斷
 
