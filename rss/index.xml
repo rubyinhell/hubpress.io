@@ -1,4 +1,232 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:44:34 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Useful Rails Helper part2]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[隨筆小記-Ruby or Rails]]></title><description><![CDATA[紀錄一些工作上用到的小技巧]]></description><link>https://rubyinhell.github.io/hubpress.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Jul 2016 15:57:03 GMT</lastBuildDate><atom:link href="https://rubyinhell.github.io/hubpress.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[HTML tips]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_each_with_index">each_with_index</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>list = [a,b,c]
+list.each_with_index { |val, index| puts "#{index}", "#{val}"}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_tag">submit_tag</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>submit_tag t('form.submit'), name: 'q[order]', class: "btn btn-default", data: { disable_with: "Please wait..." }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ransack_tip">ransack tip</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_search_form">search form</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> = search_form_for @search, :url =&gt; params[:action] do |f|</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controller">controller</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>@search = User.search(params[:q])
+@users = @search.result.order(id: :desc).paginate(:page =&gt; params[:page], :per_page =&gt; 4)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_html_tag_string">custom html tag:模糊搜尋&#8594;string</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>input.form-control type="text" placeholder="..." name="q[name_cont]" id="name_s"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_html_tag_integer_id">custom html tag:絕對搜尋&#8594;integer(id)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>input.form-control type="text" placeholder="..." name="q[id_eq]" id="id_s"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_controller_2" class="sect0">Controller</h1>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>class PageantsController &lt; ApplicationController
+  before_action :authenticate_user!, except: [:home, :signup, :vote, :list, :jialuan, :index]
+  before_action :set_pageant, only: [:show, :edit, :update, :destroy]
+  layout 'application-h5'
+  layout "application", :only =&gt; [:index, :show, :edit, :update, :destroy]
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>before_action :authenticate_user!, except: [:home, :signup, :vote, :list, :jialuan, :index]</code>
+這些頁面不認證即可登入
+<code>layout 'application'</code>
+該controller,僅指定view採用該layout</p>
+</div>
+<div class="sect2">
+<h3 id="_render_layout">render layout</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>    respond_to do |format|
+      format.html  { render layout: 'application-h5' }
+      format.json { render json: @users }
+    end</code></pre>
+</div>
+</div>
+</div>
+<h1 id="_view" class="sect0">View</h1>
+<div class="sect1">
+<h2 id="_form">form</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_checkbox_t_f">checkbox - T/F</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :publish, 'Publish'
+          div.col-sm-4.control-label
+            div.checkbox.c-checkbox
+              label
+                = f.radio_button :publish, true, {}
+                span.fa.fa-check
+                = 'Yes:'
+            div.checkbox.c-checkbox
+              label
+                = f.radio_button :publish, false, {}
+                span.fa.fa-check
+                = 'No:'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textfield">textfield</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :phone_number, t('common.mobile')
+          div.col-sm-4.control-label
+            = f.text_field :phone_number, :class =&gt; 'form-control input-lg m-b'
+            span.help-block.m-b-none
+              = t('form.must')</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_select">select</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      fieldset
+        div.form-group
+          label.col-sm-2.control-label
+            = f.label :user_id, t('machines.device_bind')
+          div.col-sm-4.control-label
+            = f.select :user_id, @user.id, {:include_blank =&gt; t('vehicles.sim_on_car')}, {}, {:class =&gt; "form-control"} rescue f.select :user_id, options_from_collection_for_select(@user, 'id', 'company_name'), {}, {:class =&gt; "form-control"}
+            span.help-block.m-b-none
+              = t('form.must')</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_button">button</h3>
+<div class="paragraph">
+<p>使用em圖示與按鍵整合</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> &lt;%= link_to edit_account_path(f), :class =&gt; 'btn btn-green' do %&gt;
+ &lt;em class="fa fa-long-arrow-left"&gt;&lt;%= t('form.edit')%&gt;&lt;/em&gt;
+ &lt;%end%&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_and_sumbit_bar">search and sumbit bar</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>.panel-heading
+  = search_form_for @search do |f|
+    .form-group.col-sm-9
+      .form-group.col-sm-4
+        #datetimepickerStart.input-group.date
+          = f.text_field :created_at_gteq, class: "form-control", :placeholder =&gt; t('form.start_date')
+          span.input-group-addon
+            span.fa.fa-calendar
+      .form-group.col-sm-4
+        #datetimepickerEnd.input-group.date
+          = f.text_field :created_at_lteq, class: "form-control", :placeholder =&gt; t('form.end_date')
+          span.input-group-addon
+            span.fa.fa-calendar
+      .input-group.col-sm-4
+        = f.text_field :name_cont, class: "form-control", :placeholder =&gt; t('common.key_word')
+        span.input-group-btn
+          = f.submit t('common.search'), class: "btn btn-default"
+    .form-group.col-sm-3
+      span.input-group-btn
+        = link_to t('form.new'), new_driver_path, :class =&gt; 'btn btn-info'
+        = f.submit t('common.search'), class: "btn btn-default"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_controller_to_access_self_account_user">another controller to access self (account &#8658; user)</h3>
+<div class="sect3">
+<h4 id="_new_page">new page</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;%= form_for :user, :url =&gt; accounts_path, method: :post do |f|%&gt;
+&lt;%= render :partial =&gt; "form", :locals =&gt; {:t =&gt; f}%&gt;
+&lt;% end %&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_edit_page">edit page</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;%= form_for @account do |f| %&gt;
+&lt;%= render :partial =&gt; "form", :locals =&gt; {:t =&gt; f}%&gt;
+&lt;% end %&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_migration">Migration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_timestamp">timestamp</h3>
+<div class="paragraph">
+<p><code>add_timestamps(:users)</code></p>
+</div>
+</div>
+</div>
+</div>]]></description><link>https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html</link><guid isPermaLink="true">https://rubyinhell.github.io/hubpress.io/2016/01/29/HTML-tips.html</guid><category><![CDATA[gem]]></category><category><![CDATA[ rails]]></category><category><![CDATA[ controller]]></category><category><![CDATA[ view]]></category><dc:creator><![CDATA[Chun Hao Hung]]></dc:creator><pubDate>Fri, 29 Jan 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Useful Rails Helper part2]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__helper_part2">常用helper part2</h2>
 <div class="sectionbody">
 <div class="sect2">
